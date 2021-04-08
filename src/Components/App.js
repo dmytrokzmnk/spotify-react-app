@@ -29,13 +29,8 @@ function App() {
       });
     }
   }, [dispatch]);
-
-  return (
-    <div>
-      {!token && <Login />}
-      {token && <Player />}
-    </div>
-  );
+  console.log(token);
+  return <>{token ? <Player spotify={spotify} /> : <Login />}</>;
 }
 
 export default App;
