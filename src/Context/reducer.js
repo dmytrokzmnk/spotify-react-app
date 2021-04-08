@@ -1,4 +1,4 @@
-import { SET_USER, SET_TOKEN } from "./action";
+import { SET_USER, SET_TOKEN, SET_PLAYLIST } from "./action";
 export const initialState = {
   user: null,
   playlists: [],
@@ -20,6 +20,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         token: action.token,
+      };
+    case SET_PLAYLIST:
+      return {
+        ...state,
+        playlists: action.playlist,
       };
     default:
       return state;

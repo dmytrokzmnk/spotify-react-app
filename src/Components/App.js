@@ -4,7 +4,7 @@ import { getTokenFromResponse } from "../spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import Player from "./Player";
 import { useStateValue } from "../Context/StateProvider";
-import { SET_USER, SET_TOKEN } from "../Context/action";
+import { SET_USER, SET_TOKEN, SET_PLAYLIST } from "../Context/action";
 const spotify = new SpotifyWebApi();
 
 function App() {
@@ -25,6 +25,13 @@ function App() {
         dispatch({
           type: SET_USER,
           user,
+        });
+      });
+
+      spotify.getUserPlaylists().then((playlist) => {
+        dispatch({
+          type: SET_PLAYLIST,
+          playlist,
         });
       });
     }
